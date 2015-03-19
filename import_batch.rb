@@ -1,9 +1,11 @@
 #!/usr/bin/env ruby
 
 require 'httparty'
+require 'yaml'
 
 cartodb_url = "http://simbiotica.cartodb.com/api/v2/sql"
-token = ""
+secrets = YAML::load(File.open('secrets.yml'))
+token = secrets['token']
 table_name = "solarimpulse"
 
 rows= CSV.read("new_output.csv")

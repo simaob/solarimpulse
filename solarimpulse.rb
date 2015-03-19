@@ -2,6 +2,7 @@
 
 require 'httparty'
 require 'active_support/core_ext/numeric/time'
+require 'yaml'
 
 
 URL = "http://storage.googleapis.com/rtw-bucket/airplane/datas/datas_minute_"
@@ -12,7 +13,8 @@ URL = "http://storage.googleapis.com/rtw-bucket/airplane/datas/datas_minute_"
 #
 #while(i>0) do
 cartodb_url = "http://simbiotica.cartodb.com/api/v2/sql"
-token = ""
+secrets = YAML::load(File.open('secrets.yml'))
+token = secrets['token']
 table_name = "solarimpulse"
 
 failures = 0
